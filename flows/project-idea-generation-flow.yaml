@@ -1,0 +1,94 @@
+# Version format ex. "0.0.1"
+version: "0.1.0"                            # Flow specification version
+
+# Basic metadata for the agent
+metadata:
+  name: "project-idea-generation-flow"       # Unique identifier
+  description: "A flow to generate project ideas based on user inputs."  # Flow purpose
+  author: "khushalsarode"                    # Must match your account username
+  tags: [project-ideas, innovation, hackathon, technology]  # Keywords for categorization
+  private: true                               # Access control setting
+
+# Define the input variables required
+inputs:
+  industry:                                  # Industry for the project idea
+    type: string                             # String format
+    description: "Industry for the project idea (e.g., Healthcare, Education, Finance)"
+    required: true
+    example: "Healthcare"
+  
+  technology_preference:                     # Preferred technology stack
+    type: string
+    description: "Preferred technology stack for the project (e.g., AI, Blockchain, IoT)"
+    required: true
+    example: "AI"
+  
+  prize_sponsors:                            # Optional prize sponsor
+    type: string
+    description: "Prize sponsor or technology to be used (e.g., Microsoft, Google Cloud)"
+    required: false
+    example: "Google Cloud"
+  
+  project_scale:                             # Project scale (Solo, Team, Large Scale)
+    type: string
+    description: "Project scale (e.g., Solo, Team, Large Scale)"
+    required: true
+    example: "Team"
+  
+  objective:                                 # Objective of the project (Problem-solving, Innovation, etc.)
+    type: string
+    description: "Objective of the project (e.g., Problem-solving, Innovation, Product development)"
+    required: true
+    example: "Problem-solving"
+  
+  deadline:                                  # Deadline or project duration
+    type: string
+    description: "Deadline or project duration (e.g., Hackathon, Long-term project)"
+    required: true
+    example: "Hackathon"
+
+# Define the LLM model for idea synthesis
+model:
+  provider: "openai"                         # Provider: OpenAI (GPT-based model)
+  name: "gpt-4o"                             # Model: GPT-4 (or equivalent)
+
+# The prompt for the AI model to synthesize the project idea
+prompt: |
+  Based on the following user inputs, generate a list of potential project ideas:
+  - Industry: {industry}
+  - Technology preference: {technology_preference}
+  - Project scale: {project_scale}
+  - Objective: {objective}
+  - Deadline: {deadline}
+  For each idea, include the following:
+  - Brief description of the idea
+  - The required resources and team members
+  - Project scale (solo/team)
+  - Expected impact (e.g., technological, social, environmental)
+  - Relevant technologies, based on user inputs
+  - Consider the prize sponsor like {prize_sponsors} and how it could influence the choice of technology stack.
+
+# ReadMe configuration
+readme: |
+  This flow is designed to help users generate innovative project ideas based on specific inputs, such as industry, technology stack, project scale, and objective.
+  
+  ### Workflow Overview:
+  1. **User Input Collection**: Collects user inputs regarding industry, technology, project scale, and objectives.
+  2. **Idea Synthesis**: Synthesizes project ideas based on the user inputs to generate detailed project ideas, including project scope, resources, and expected impact.
+  
+  ### Inputs:
+  - **Industry**: The sector or industry for the project idea.
+  - **Technology Preference**: The technology stack the user prefers to work with.
+  - **Project Scale**: The scope of the project (solo, team, large-scale).
+  - **Objective**: The main goal or purpose of the project (e.g., problem-solving, innovation).
+  - **Deadline**: Timeframe for completing the project.
+  - **Prize Sponsors**: Optional, a sponsor or technology to be considered.
+
+  ### Outputs:
+  - A list of project ideas, including:
+    - A brief description
+    - Resources required
+    - Scope (solo/team)
+    - Expected impact
+    - Relevant technologies
+

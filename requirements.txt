@@ -1,0 +1,3 @@
+mira-sdk
+python-dotenv
+streamlit

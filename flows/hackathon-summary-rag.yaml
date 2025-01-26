@@ -1,0 +1,28 @@
+version: "0.0.1"
+
+metadata:
+  name: "hackathon-summary-rag"
+  description: "Summarizes hackathon descriptions from text, URL, or PDF."
+  author: "khushalsarode"
+  tags: [hackathon, summarizer, NLP]
+  private: false
+
+inputs:
+  hackathon_description:
+    type: string
+    description: "The input text for summarization."
+    required: true
+    example: "Hackathon event details for summarization."
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+
+
+prompt: |
+  -Summarize the following hackathon description in a concise and clear format:
+  {hackathon_description}. 
+  - Also provide relevance tips and tricks for the hackathon.
+
+readme: |
+  This flow summarizes hackathon descriptions using RAG for enhanced relevance.

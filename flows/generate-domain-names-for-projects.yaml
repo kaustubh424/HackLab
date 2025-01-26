@@ -1,0 +1,56 @@
+version: "0.1.0"
+
+metadata:
+  name: "generate-domain-names-for-projects"
+  description: "this flow generate an domain name with extension,seo,metatags etc for given project information."
+  author: "khushalsarode"
+  tags: [domainname, ai, project]
+  private: false
+
+inputs:
+
+  industry_type:
+    type: string
+    description: "enter type of industry for which you want domain name."
+    required: true
+    example: "type of service industry: medical,IT tool etc"
+
+  project_name:
+    type: string
+    description: "enter the name of your project"
+    required: true
+    example: "name of proejct"
+
+  project_description:
+    type: string
+    description: "enter the description of your project"
+    required: true
+    example: "description of project"
+  
+  primary_keywords:
+    type: string
+    description: "enter 3 kewords related to your project"
+    required: true
+    example: "eg: keyword1,keyword2,keyword3"
+
+  secondary_keywords:
+    type: string
+    description: "enter 3 keywords related to your project"
+    required: true
+    example: "eg: keyword1,keyword2,keyword3"
+
+  extensions:
+    type: string
+    description: "enter the domain extensions you want to include"
+    required: false
+    example: "eg: .com,.net,.org"
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+
+prompt: |
+  Provide creative and unique domain name suggestions for the {industry_type} industry. The domain should relate to {project_name} and included this keywords {primary_keywords} {secondary_keywords} may help you grab the best. Please include the following extensions {extensions} and at end also provide the SEO Metadata & Taglines based on prompt and domains.
+
+readme: |
+  This element flow using mira is used to create an domain name with required infomation foruser based on user given project information.
